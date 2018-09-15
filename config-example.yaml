@@ -1,0 +1,46 @@
+# Example configuration file for GoDaddy DDNS
+
+# Credentials - generate these at https://developer.godaddy.com/keys/
+api_key: 35-digit-api-key
+api_secret: 22-digit-api-secret
+
+# [Optional] (can be set to https://api.ote-godaddy.com for testing)
+# api_base_url: https://api.godaddy.com
+
+
+# Domains and subdomains to be updated are specified as a list of 'targets':
+# Note: Both 'domain' and 'alias' may be lists
+targets:
+  # Update 'example.com'
+  - domain: example.com
+  # Update example.com and example.org
+  - domain:
+      - example.com
+      - example.org
+  # Update sub.example.com
+  - domain: example.com
+    alias: sub
+  # Update sub1.example.com and sub2.example.com
+  - domain: example.com
+    alias:
+      - sub1
+      - sub2
+  # Update sub.example.com and sub.example.org
+  - domain:
+      - example.com
+      - example.org
+    alias: sub
+  # Update sub1.example.com, sub2.example.com, sub1.example.org and sub2.example.org
+  - domain:
+      - example.com
+      - example.org
+    alias:
+      - sub1
+      - sub2
+
+
+# System configuration
+## Set to "" to disable logging
+log_path: "/var/log/godaddy-ddns/godaddy-ddns.log"
+## Cache should be set, otherwise the IP will be updated every time (could be considered abusive)
+cache_path: "/var/cache/godaddy-ddns/godaddy-ddns.cache"

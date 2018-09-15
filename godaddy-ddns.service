@@ -1,0 +1,6 @@
+[Unit]
+Description=GoDaddy DDNS - update IP address
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/godaddy-ddns --config /etc/godaddy-ddns/config.yaml
