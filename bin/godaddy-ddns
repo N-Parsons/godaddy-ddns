@@ -44,7 +44,7 @@ def main(config, force, quiet, nocolour):
         # Echo the message and exit with failure
         echo(str(e))
         sys.exit(1)
-    except:
+    except Exception:
         echo("Error: An unexpected exception occurred!")
         raise  # raise the exception for debugging/issue reporting
 
