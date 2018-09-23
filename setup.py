@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(name='godaddy-ddns',
-      version='0.1',
+      version='0.2',
       description='DDNS-like update service for GoDaddy',
       url='http://github.com/N-Parsons/godaddy-ddns',
       author='Nathan Parsons',

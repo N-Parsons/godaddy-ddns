@@ -50,6 +50,7 @@ The script can be run manually by calling `godaddy-ddns` with the following opti
 - `--config`: Path to the configuration file (default: `/etc/godaddy-ddns/config.yaml`).
 - `--force`: Update the IP address regardless of the value in the cache.
 - `--quiet`: Don't print messages to `stdout`.
+- `--nocolour`: Don't use colour when printing to `stdout`.
 
 ### Systemd
 
