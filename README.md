@@ -6,7 +6,7 @@ DDNS-like update service for GoDaddy DNS records
 
 This script and service enable DDNS-like checking of the public IP address and subsequent updating of GoDaddy DNS records, and is intended for use with servers that undergo infrequent public IP address changes. The aim is to get the benefits of dynamic DNS without the need for a third-party DDNS service.
 
-**Note:** The lowest value of TTL (time-to-live) that GoDaddy permits is 600 seconds (10 minutes). As a result, the old IP address may still be cached on various for up to 10 minutes after a change is made, meaning that the site will remain temporarily unavailable at that domain. If you require lower downtime than this, please consider using a proper DDNS service such as [Dynu.com](https://dynu.com).
+**Note:** The lowest value of TTL (time-to-live) that GoDaddy permits is 600 seconds (10 minutes). As a result, the old IP address may still be cached on various DNS servers for up to 10 minutes after a change is made, meaning that the site will remain temporarily unavailable at that domain. If you require lower downtime than this, please consider using a proper DDNS service such as [Dynu.com](https://dynu.com).
 
 
 ## Requirements
@@ -54,7 +54,7 @@ The script can be run manually by calling `godaddy-ddns` with the following opti
 
 ### Systemd
 
-Two systemd files are included with this package so that the script can be sceduled to run automatically. To use these, simply copy `godaddy-ddns.service` and `godaddy-ddns.timer` to `/etc/systemd/system/`, then enable and start the timer.
+Two systemd files are included with this package so that the script can be scheduled to run automatically. To use these, simply copy `godaddy-ddns.service` and `godaddy-ddns.timer` to `/etc/systemd/system/`, then enable and start the timer.
 
 ```sh
 # cp godaddy-ddns.{service,timer} /etc/systemd/system/
@@ -72,7 +72,7 @@ An example configuration is avaiable in `config-example.yaml`.
 
 API keys can be generated at <https://developer.godaddy.com/keys/>.
 
-The API base URL may also be specified in the config file if you want to use the testing environment (OTE). I have not used this functionality, but it should work (note: you will need a separate key and secret for the OTE).
+The API base URL (`api_base_url`) may also be specified in the config file if you want to use the testing environment (OTE). Note: I have not tested this functionality, but I've included it in case others want to try it (note: you will need a separate API key and secret for the OTE).
 
 ### Targets (domains you want to update)
 
@@ -80,7 +80,7 @@ The `targets` are a list of domains and aliases to be updated. Each element of t
 
 A complete set of example targets are given in `config-example.yaml`.
 
-Specifying non-existent aliases is silently tolerated by the API and thus also by this script. Non-existent domains cause a warning to be logged.
+Specifying non-existent aliases is silently tolerated by the API and thus also by this script. Non-existent domains cause a warning to be logged and printed.
 
 ### Logging and caching
 
